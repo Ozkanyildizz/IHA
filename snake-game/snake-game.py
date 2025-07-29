@@ -22,13 +22,14 @@ if os.path.exists(skor_dosyasi):
 w = turtle.Screen()
 w.title("Yılan Oyunu")
 w.setup(600,600)
-w.bgcolor("#FDF6E3")
+#w.bgcolor("#FDF6E3")
+w.bgcolor("#000000")
 w.tracer(0)
 
 # Başlangıç mesajı
 baslangic_mesaj = turtle.Turtle()
 baslangic_mesaj.hideturtle()
-baslangic_mesaj.color("black")
+baslangic_mesaj.color("white")
 baslangic_mesaj.penup()
 baslangic_mesaj.goto(0, 0)
 baslangic_mesaj.write("YILAN OYUNU\n\nBaşlamak için SPACE tuşuna bas", align="center", font=("Arial", 16, "bold"))
@@ -42,8 +43,9 @@ def oyunu_baslat():
 # Yılan kafası
 yln = turtle.Turtle()
 yln.speed(0)
-yln.shape("turtle")
-yln.color("#2E8B57")
+yln.shape("square")
+#yln.color("#2E8B57")
+yln.color("#FFFFFF")
 yln.penup()
 yln.goto(0,0)
 yln.yon = "dur"
@@ -52,7 +54,7 @@ yln.yon = "dur"
 yem = turtle.Turtle()
 yem.speed(0)
 yem.shape("circle")
-yem.color("#FF4500")
+yem.color("#009B46")
 yem.penup()
 yem.goto(0,100)
 
@@ -97,7 +99,7 @@ def engelEkle(adet):
                 engel = turtle.Turtle()
                 engel.speed(0)
                 engel.shape("square")
-                engel.color("#8B4513")
+                engel.color("#FF0000")
                 engel.penup()
                 engel.goto(x, y)
                 engeller.append(engel)
@@ -117,8 +119,9 @@ def ye():
 
         kuyruk = turtle.Turtle()
         kuyruk.speed(0)
-        kuyruk.shape("circle")
-        kuyruk.color("#3CB371")
+        kuyruk.shape("square")
+        #kuyruk.color("#3CB371")
+        kuyruk.color("#FFFFFF")
         kuyruk.penup()
         liste.append(kuyruk)
 
@@ -173,7 +176,7 @@ while True:
         hareket()
 
         # Duvara çarpma
-        if abs(yln.xcor()) > 290 or abs(yln.ycor()) > 290:
+        if abs(yln.xcor()) > 290 or abs(yln.ycor()) > 290: # abs mutlak değer alır 
             baslangic()
 
         # Kendi kuyruğuna çarpma
