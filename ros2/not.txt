@@ -1,0 +1,67 @@
+ source /opt/ros/foxy/setup.bash 
+ ros2 run turtlesim turtlesim_node turtlesim başlatma 
+ ros2 run turtlesim turtle_teleop_key yeni terminalde hareket ettirir ya da bunu kullan ./turtle_teleop_custom.py
+
+ros2 node list
+ros2 topic list
+ros2 service list
+ros2 action list
+
+
+ros2 ortam kurma 
+cd ~/ros2_ws/src
+yoksa 
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+
+ros2 pkg create --build-type ament_python package_name
+
+my_package/
+├── package.xml
+├── resource/my_package
+├── setup.cfg
+├── setup.py
+└── my_package/
+    └── __init__.py
+    
+kodu buraya koy 
+~/ros2_ws/src/my_package/my_package/
+
+setup.py dosyasına node’ları tanıt
+entry_points={
+    'console_scripts': [
+        'subscriber = my_package.subscriber:main',
+        'publisher = my_package.publisher:main',
+    ],
+},
+
+Burada subscriber ve publisher → terminalden çağıracağın komut,
+my_package.subscriber:main → subscriber.py içindeki main() fonksiyonu.
+
+cd ~/ros2_ws
+colcon build
+cd ~/ros2_ws
+colcon build --packages-select one_package_name
+
+
+Her yeni terminal açtığında çalıştır:
+source ~/ros2_ws/install/setup.bash
+
+ros2 run my_package subscriber
+
+ros2 run my_package publisher
+
+🔹 1. Eğer tek Python dosyan varsa
+
+
+Mesela sadece my_node.py dosyan olsun:
+
+~/ros2_ws/src/my_package/my_package/my_node.py içine koyarsın.
+
+setup.py içinde sadece bir tane entry point yazarsın:
+entry_points={
+    'console_scripts': [
+        'my_node = my_package.my_node:main',
+    ],
+},
+
