@@ -1,0 +1,12 @@
+# TriangleCalc.srv
+# Request
+string calc_type  # "alan" veya "cevre"
+float64 a         # taban veya kenar1
+float64 b         # yükseklik veya kenar2
+float64 c         # sadece çevre için kenar3, alan için 0
+---
+# Response
+float64 result    # Alan veya çevre sonucu
+string message    # Hata mesajı veya bilgi
+
+
