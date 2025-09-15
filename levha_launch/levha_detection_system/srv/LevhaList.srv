@@ -1,0 +1,10 @@
+# Request
+string[] levha_adlari
+float32[] confidences
+float32[] xs
+float32[] ys
+---
+# Response
+string en_yakin_levha
+float32 uzaklik
+string durum
