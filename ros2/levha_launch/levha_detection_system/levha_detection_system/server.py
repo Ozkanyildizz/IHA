@@ -16,15 +16,23 @@ class LevhaServiceServer(Node):
     def callback(self, request, response):
         min_distance = float('inf')
         en_yakin_index = 0
-        for i, (x, y) in enumerate(zip(request.xs, request.ys)):
-            uzaklik = math.sqrt(x**2 + y**2)
-            if uzaklik < min_distance:
-                min_distance = uzaklik
-                en_yakin_index = i
+        
+        if len(request.xs) == 1:
+            en_yakin_index = 0
+
+        elif len(request.xs) > 1 :
+                for i, (x, y) in enumerate(zip(request.xs, request.ys)):
+                    uzaklik = math.sqrt(x**2 + y**2)
+                    if uzaklik < min_distance:
+                        min_distance = uzaklik
+                        en_yakin_index = i
+                
+
 
         levha_adi = request.levha_adlari[en_yakin_index]
         confidence = request.confidences[en_yakin_index]
         uzaklik = math.sqrt(request.xs[en_yakin_index]**2 + request.ys[en_yakin_index]**2)
+
 
         if confidence >= 95:
             durum = "Tespit edildi"
