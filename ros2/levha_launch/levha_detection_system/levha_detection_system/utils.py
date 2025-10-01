@@ -19,9 +19,9 @@ def kayit_ekle(levha_adi, confidence, uzaklik, durum):
     if os.path.exists(JSON_FILE):
         try:
             with open(JSON_FILE, "r") as f:
-                content = f.read().strip()
-                data = json.loads(content) if content else []
-                if not isinstance(data, list):
+                content = f.read().strip() # İçeriği okunur ve baştaki/sondaki boşluklar (strip()) temizlenir.
+                data = json.loads(content) if content else [] # json formatına dönüştür 
+                if not isinstance(data, list): # JSON’dan okunan veri liste değilse (örneğin dict, string vs.) → güvenlik amacıyla data sıfırlanır → boş liste yapılır.
                     data = []
         except Exception:
             data = []
